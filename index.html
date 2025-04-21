@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Mulato - Portfólio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('main', () => ({
+                currentPage: 'home',
+                init() {
+                    this.$watch('currentPage', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
+                }
+            }))
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --verde: #16a34a;
+        }
+        
+        .tech-icon {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            opacity: 0.8;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed" x-data="main" x-init="init()">
+    <div class="bg-green-600 text-white py-1 px-4 text-center text-sm">
+        <span class="animate-pulse"><a href="https://github.com/gmulato" target="__blank">github.com/gmulato</a></span>
+    </div>
+    
+    <header class="p-6 flex flex-col md:flex-row justify-between items-center border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
+        <h1 class="text-2xl font-bold text-green-700 flex items-center">
+            <span class="mr-2">{ </span>
+            <p class="text-xl">Guilherme Mulato</p>
+            <span class="ml-2"> }</span>
+        </h1>
+        <nav class="space-x-4 md:space-x-6 text-green-600 flex mt-4 md:mt-0">
+            <a @click.prevent="currentPage = 'home'" href="#" class="hover:text-green-800 px-3 py-2 rounded-lg transition-colors" :class="currentPage === 'home' ? 'bg-green-100 text-green-800' : ''">Home</a>
+            <a @click.prevent="currentPage = 'sobre'" href="#" class="hover:text-green-800 px-3 py-2 rounded-lg transition-colors" :class="currentPage === 'sobre' ? 'bg-green-100 text-green-800' : ''">Sobre</a>
+            <a @click.prevent="currentPage = 'atuacao'" href="#" class="hover:text-green-800 px-3 py-2 rounded-lg transition-colors" :class="currentPage === 'atuacao' ? 'bg-green-100 text-green-800' : ''">Projetos</a>
+            <a @click.prevent="currentPage = 'skills'" href="#" class="hover:text-green-800 px-3 py-2 rounded-lg transition-colors" :class="currentPage === 'skills' ? 'bg-green-100 text-green-800' : ''">Skills</a>
+        </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-12 px-6">
+        <!-- Página Home -->
+        <template x-if="currentPage === 'home'">
+            <div>
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-4xl font-bold text-green-700 mb-4">Tech Lead & <br>Laravel Fullstack Developer</h2>
+                        <p class="text-xl mb-6">Transformando ideias em soluções de alta performance com foco em automação e sistemas escaláveis.</p>
+                        <div class="flex gap-4">
+                            <button @click="currentPage = 'atuacao'" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors shadow-lg">Ver Projetos</button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 w-full max-w-md">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                                <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                                <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm text-gray-500">// Desenvolvedor Laravel Fullstack</div>
+                                <div class="font-mono text-sm">
+                                    <span class="text-purple-600">function</span> <span class="text-blue-600">apresentacao</span>() {<br>
+                                    &nbsp;&nbsp;<span class="text-green-600">return</span> [<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-600">'nome'</span> => <span class="text-green-600">'Guilherme Mulato'</span>,<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-600">'foco'</span> => <span class="text-green-600">'Automação & Performance'</span>,<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-600">'experiência'</span> => <span class="text-green-600">'1+ ano'</span><br>
+                                    &nbsp;&nbsp;];<br>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="text-green-600 mb-4 text-3xl">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Desenvolvimento</h3>
+                        <p class="text-gray-600">Soluções web com Laravel, sistemas multi-tenant e aplicações escaláveis.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="text-green-600 mb-4 text-3xl">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Automação</h3>
+                        <p class="text-gray-600">IA aplicada ao tráfego pago, otimização baseada em ROI e gerenciamento automatizado.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="text-green-600 mb-4 text-3xl">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Análise</h3>
+                        <p class="text-gray-600">Modelagem de LTV, métricas de performance e otimização de tráfego.</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mb-16">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-6">Tecnologias</h3>
+                    <div class="flex justify-center gap-8 flex-wrap">
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-red-600">
+                                <i class="fab fa-laravel"></i>
+                            </div>
+                            <span class="text-sm">Laravel</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-blue-600">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <span class="text-sm">PHP</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-blue-500">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <span class="text-sm">React</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-purple-600">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <span class="text-sm">Inertia.js</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-orange-600">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span class="text-sm">MySQL</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-red-500">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <span class="text-sm">Redis</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-sky-500">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <span class="text-sm">JavaScript</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-cyan-600">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <span class="text-sm">Tailwind</span>
+                        </div>
+                        <div class="tech-icon text-center">
+                            <div class="text-4xl mb-2 text-indigo-600">
+                                <i class="fab fa-bootstrap"></i>
+                            </div>
+                            <span class="text-sm">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Página Sobre -->
+        <template x-if="currentPage === 'sobre'">
+            <div>
+                <h2 class="text-3xl font-bold text-green-700 mb-6">Sobre mim</h2>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mb-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="w-full md:w-2/3">
+                            <p class="text-lg mb-4">
+                                Sou Guilherme Mulato, tech lead e desenvolvedor Laravel fullstack. Atuo profissionalmente há 1 ano na área de tecnologia — e nesse tempo mergulhei fundo em sistemas de tráfego pago, APIs e automações inteligentes.
+                            </p>
+                            <p class="text-lg mb-4">
+                                Minha carreira começa com ferramentas focadas em players do Google Ad Manager que trabalham com arbitragem, os publishers de performance, esse tipo de modelo de trabalho é caracterizado por monetizar o site a um valor melhor do que se paga em plataformas de compra de tráfego.
+                            </p>
+                            
+                            <h3 class="text-xl font-semibold text-green-700 mt-6 mb-3">Minha abordagem</h3>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Construir soluções escaláveis desde o início</li>
+                                <li>Entender profundamente o negócio antes de programar</li>
+                                <li>Automatizar processos repetitivos</li>
+                                <li>Analisar dados para tomar decisões baseadas em evidências</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="w-full md:w-1/3">
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <h4 class="font-semibold text-lg mb-3 text-green-700">Formação</h4>
+                                <div class="mb-4">
+                                    <div class="text-sm text-gray-500">2024</div>
+                                    <div class="font-medium">Tecnologia em Sistemas para Internet</div>
+                                    <div class="text-sm">IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Birigui</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <button @click="currentPage = 'atuacao'" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors shadow-lg">Ver meus projetos</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- Página Atuação/Projetos -->
+        <template x-if="currentPage === 'atuacao'">
+            <div>
+                <h2 class="text-3xl font-bold text-green-700 mb-6">Projetos & Atuação</h2>
+                
+                <div class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="project-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-green-600 mb-4 text-3xl">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Sistema Multi-tenant para Publishers</h3>
+                            <p class="text-gray-600 mb-4">
+                                Plataforma centralizada para gerenciamento de campanhas de tráfego pago com otimização automática de ROI.
+                            </p>
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">Laravel</span>
+                                <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">Inertia.js</span>
+                                <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded">React</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-green-600 mb-4 text-3xl">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">IA para Gerenciamento de Tráfego</h3>
+                            <p class="text-gray-600 mb-4">
+                                Sistema inteligente que opera campanhas automaticamente, decidindo rotas e otimizando baseado em ROI.
+                            </p>
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded">PHP</span>
+                                <span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded">APIs</span>
+                                <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">Machine Learning</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-green-600 mb-4 text-3xl">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Apps de LTV para Esportes</h3>
+                            <p class="text-gray-600 mb-4">
+                                Aplicativos focados em nichos específicos como esportes, com modelagem de Life Time Value para maximizar receita.
+                            </p>
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">Laravel</span>
+                                <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded">React Native</span>
+                                <span class="px-2 py-1 text-xs bg-orange-100 text-orange-700 rounded">MySQL</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-green-600 mb-4 text-3xl">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Balanceador de Tráfego Inteligente</h3>
+                            <p class="text-gray-600 mb-4">
+                                Ferramenta que distribui o tráfego entre URLs com base nas métricas do Google Ad Manager para maximizar receita.
+                            </p>
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded">Laravel</span>
+                                <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">Redis</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded">Google API</span>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-sync-alt mr-1"></i> +700k requests/dia
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg border border-green-100 mb-8">
+                    <h3 class="text-xl font-semibold text-green-700 mb-3">O que eu faço</h3>
+                    <ul class="list-disc pl-6 space-y-3 text-lg">
+                        <li>
+                            Trabalho em um sistema multi-tenant para publishers de performance, que centraliza e otimiza a gestão de campanhas.
+                        </li>
+                        <li>
+                            Desenvolvo uma IA que opera campanhas de tráfego automaticamente — ela decide rotas, otimiza baseando-se em ROI e ainda está ativa em várias campanhas.
+                        </li>
+                        <li>
+                            Participo da construção de apps voltados para receita de LTV (life time value), com modelos focados em nichos específicos como esportes.
+                        </li>
+                        <li>
+                            Criei uma ferramenta de balanceamento de tráfego entre URLs, que decide o melhor destino com base nas principais métricas do Google Ad Manager.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="flex justify-center">
+                    <button @click="currentPage = 'skills'" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors shadow-lg">Ver minhas skills</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- Página Skills -->
+        <template x-if="currentPage === 'skills'">
+            <div>
+                <h2 class="text-3xl font-bold text-green-700 mb-6">Skills & Expertise</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">Desenvolvimento</h3>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fab fa-laravel text-red-600 mr-2"></i> Laravel
+                                </span>
+                                <span class="text-sm text-gray-500">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fab fa-php text-blue-600 mr-2"></i> PHP
+                                </span>
+                                <span class="text-sm text-gray-500">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fab fa-react text-blue-500 mr-2"></i> React
+                                </span>
+                                <span class="text-sm text-gray-500">Intermediário</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fas fa-bolt text-purple-600 mr-2"></i> Inertia.js
+                                </span>
+                                <span class="text-sm text-gray-500">Avançado</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fas fa-database text-orange-600 mr-2"></i> MySQL
+                                </span>
+                                <span class="text-sm text-gray-500">Avançado</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                    <i class="fas fa-server text-red-500 mr-2"></i> Redis
+                                </span>
+                                <span class="text-sm text-gray-500">Intermediário</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium flex items-center">
+                                <i class="fas fa-wind text-cyan-600 mr-2"></i> Tailwind
+                                </span>
+                                <span class="text-sm text-gray-500">Intermediário</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">Habilidades Técnicas</h3>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Arquitetura orientada a objetos (OOP)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Filas assíncronas com Redis</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Integrações via API (Meta Ads, Google Ads, GAM)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Banco de dados (MySQL, otimizações, transações)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Modelagem e análise de LTV</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Sistemas multi-tenant e escaláveis</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Desenvolvimento de IA aplicada ao tráfego</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>Otimização de performance em aplicações web</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>CI/CD e deployment automatizado</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                    <h3 class="text-xl font-semibold text-green-700 mb-4">Stack Preferida</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-red-600 mr-3">
+                                <i class="fab fa-laravel"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Laravel</div>
+                                <div class="text-sm text-gray-500">Backend Framework</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-purple-600 mr-3">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Inertia.js</div>
+                                <div class="text-sm text-gray-500">Interface Bridge</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-blue-600 mr-3">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">React</div>
+                                <div class="text-sm text-gray-500">Frontend Framework</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-orange-600 mr-3">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">MySQL</div>
+                                <div class="text-sm text-gray-500">Banco de Dados</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-red-500 mr-3">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Redis</div>
+                                <div class="text-sm text-gray-500">Cache & Filas</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                            <div class="text-2xl text-cyan-700 mr-3">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Tailwind</div>
+                                <div class="text-sm text-gray-500">Framework de estilização</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </main>
+</body>
+</html>
